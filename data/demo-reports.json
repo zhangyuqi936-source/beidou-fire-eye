@@ -1,0 +1,192 @@
+[
+  {
+    "id": "RPT-20260601-001",
+    "title": "万达写字楼A座消防巡检",
+    "location": "万达写字楼A座 12层",
+    "inspector": "张安全",
+    "inspectDate": "2026-06-01",
+    "status": "已整改",
+    "hazards": [
+      {
+        "id": "HZ-001",
+        "title": "疏散通道严重堵塞",
+        "category": "疏散通道",
+        "severity": "严重",
+        "description": "疏散走道被纸箱和杂物堆放占据约70%宽度，严重影响人员紧急疏散。现场可见大量纸箱堆至天花板高度。",
+        "photoNote": "12层电梯厅东侧走道",
+        "taxonomyCode": "2.2.1",
+        "riskLevel": "IV",
+        "riskScore": 48,
+        "confidence": "high",
+        "matchedLaws": [
+          {
+            "lawId": "GB50016-5.5.18",
+            "title": "GB 50016-2014 建筑设计防火规范",
+            "clause": "第5.5.18条 疏散走道宽度",
+            "level": "强制性",
+            "penalty": "责令改正，处五千元以上五万元以下罚款"
+          },
+          {
+            "lawId": "FIRELAW-28",
+            "title": "《消防法》",
+            "clause": "第28条",
+            "level": "强制性",
+            "penalty": "对单位处五千元以上五万元以下罚款"
+          }
+        ],
+        "rectification": "立即清理疏散走道上所有杂物，确保净宽度≥1.1m。限期24小时内完成，完成后拍照留档。"
+      },
+      {
+        "id": "HZ-002",
+        "title": "灭火器缺失",
+        "category": "消防设施",
+        "severity": "一般",
+        "description": "消火栓箱旁应配置2具灭火器，现场发现灭火器箱为空，灭火器缺失。",
+        "photoNote": "12层西侧消火栓箱旁",
+        "taxonomyCode": "1.3.1",
+        "riskLevel": "III",
+        "riskScore": 24,
+        "confidence": "high",
+        "matchedLaws": [
+          {
+            "lawId": "GB50140-6.1",
+            "title": "GB 50140-2005 建筑灭火器配置设计规范",
+            "clause": "第6.1条 灭火器配置",
+            "level": "强制性",
+            "penalty": "责令改正，处五千元以下罚款"
+          }
+        ],
+        "rectification": "按GB 50140配置2具4kg干粉灭火器于指定位置，限期7天内完成。"
+      }
+    ],
+    "rectifications": [
+      {
+        "hazardId": "HZ-001",
+        "action": "已清理12层走道杂物，宽度恢复至1.3m",
+        "deadline": "2026-06-02",
+        "status": "completed"
+      },
+      {
+        "hazardId": "HZ-002",
+        "action": "已配置2具4kg干粉灭火器",
+        "deadline": "2026-06-08",
+        "status": "completed"
+      }
+    ]
+  },
+  {
+    "id": "RPT-20260615-002",
+    "title": "阳光商场消防巡检",
+    "location": "阳光商场 1F-3F",
+    "inspector": "李检查",
+    "inspectDate": "2026-06-15",
+    "status": "待整改",
+    "hazards": [
+      {
+        "id": "HZ-003",
+        "title": "常闭式防火门未关闭",
+        "category": "疏散通道",
+        "severity": "一般",
+        "description": "2层疏散楼梯间常闭式防火门被用灭火器顶住保持常开状态，违反消防规定。",
+        "photoNote": "2层楼梯间入口",
+        "taxonomyCode": "2.3.2",
+        "riskLevel": "III",
+        "riskScore": 27,
+        "confidence": "high",
+        "matchedLaws": [
+          {
+            "lawId": "GB50016-5.5.2",
+            "title": "GB 50016-2014 建筑设计防火规范",
+            "clause": "第5.5.2条 安全出口",
+            "level": "强制性",
+            "penalty": "责令改正，处五千元以上五万元以下罚款"
+          },
+          {
+            "lawId": "FIRELAW-28",
+            "title": "《消防法》",
+            "clause": "第28条",
+            "level": "强制性",
+            "penalty": "对单位处五千元以上五万元以下罚款"
+          }
+        ],
+        "rectification": "立即移除挡门物品，确保常闭式防火门保持关闭状态。张贴警示标识。"
+      },
+      {
+        "id": "HZ-004",
+        "title": "电气线路私拉乱接",
+        "category": "电气安全",
+        "severity": "一般",
+        "description": "3层商铺天花板处可见电线私拉乱接，未穿管保护，存在电气火灾隐患。",
+        "photoNote": "3层B区走廊顶部",
+        "taxonomyCode": "3.1.1",
+        "riskLevel": "II",
+        "riskScore": 16,
+        "confidence": "medium",
+        "matchedLaws": [
+          {
+            "lawId": "GB50016-10.2",
+            "title": "GB 50016-2014 建筑设计防火规范",
+            "clause": "第10.2条 电气线路",
+            "level": "强制性",
+            "penalty": "责令改正，处五千元以上五万元以下罚款"
+          }
+        ],
+        "rectification": "重新敷设电气线路，穿金属管或封闭式线槽保护。限期30天整改。"
+      }
+    ],
+    "rectifications": [
+      {
+        "hazardId": "HZ-003",
+        "action": "移除挡门物，恢复常闭状态并张贴警示标识",
+        "deadline": "2026-06-22",
+        "status": "pending"
+      },
+      {
+        "hazardId": "HZ-004",
+        "action": "委托专业电工重新敷设线路",
+        "deadline": "2026-07-15",
+        "status": "pending"
+      }
+    ]
+  },
+  {
+    "id": "RPT-20260620-003",
+    "title": "星辰幼儿园消防巡检",
+    "location": "星辰幼儿园 全园",
+    "inspector": "王消防",
+    "inspectDate": "2026-06-20",
+    "status": "检查中",
+    "hazards": [
+      {
+        "id": "HZ-005",
+        "title": "应急照明灯损坏",
+        "category": "消防设施",
+        "severity": "轻微",
+        "description": "教学楼一层走道尽头一盏应急照明灯外观破损，灯罩碎裂。",
+        "photoNote": "教学楼1层东侧走道",
+        "taxonomyCode": "1.5.1",
+        "riskLevel": "I",
+        "riskScore": 6,
+        "confidence": "high",
+        "matchedLaws": [
+          {
+            "lawId": "FIRELAW-16",
+            "title": "《消防法》",
+            "clause": "第16条",
+            "level": "强制性",
+            "penalty": "责令限期改正"
+          }
+        ],
+        "rectification": "更换损坏的应急照明灯，确保疏散照明正常。下次巡检复查。"
+      }
+    ],
+    "rectifications": [
+      {
+        "hazardId": "HZ-005",
+        "action": "更换应急照明灯",
+        "deadline": "2026-06-30",
+        "status": "pending"
+      }
+    ]
+  }
+]

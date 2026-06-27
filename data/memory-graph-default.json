@@ -1,0 +1,38 @@
+{
+  "domain": "fire-safety-inspection",
+  "version": "1.0",
+  "nodes": [
+    { "id": "fire-facility", "label": "消防设施", "category": "检查大类", "children": ["extinguisher", "hydrant", "alarm", "sprinkler", "emergency-light"] },
+    { "id": "evacuation", "label": "疏散通道", "category": "检查大类", "children": ["exit", "corridor", "stair", "fire-door"] },
+    { "id": "electrical", "label": "电气安全", "category": "检查大类", "children": ["wiring", "distribution", "appliance"] },
+    { "id": "fire-source", "label": "火源管理", "category": "检查大类", "children": ["open-flame", "flammable", "fire-separation"] },
+    { "id": "management", "label": "消防管理", "category": "检查大类", "children": ["responsibility", "training"] },
+    { "id": "extinguisher", "label": "灭火器", "category": "检查子项" },
+    { "id": "hydrant", "label": "消火栓", "category": "检查子项" },
+    { "id": "alarm", "label": "火灾报警器", "category": "检查子项" },
+    { "id": "sprinkler", "label": "自动喷淋", "category": "检查子项" },
+    { "id": "emergency-light", "label": "应急照明与疏散标志", "category": "检查子项" },
+    { "id": "exit", "label": "安全出口", "category": "检查子项" },
+    { "id": "corridor", "label": "疏散走道", "category": "检查子项" },
+    { "id": "stair", "label": "疏散楼梯", "category": "检查子项" },
+    { "id": "fire-door", "label": "防火门", "category": "检查子项" },
+    { "id": "wiring", "label": "电气线路", "category": "检查子项" },
+    { "id": "distribution", "label": "配电设施", "category": "检查子项" }
+  ],
+  "edges": [
+    { "from": "extinguisher", "to": "GB50140", "relation": "governed_by" },
+    { "from": "hydrant", "to": "GB50016", "relation": "governed_by" },
+    { "from": "alarm", "to": "GB50116", "relation": "governed_by" },
+    { "from": "sprinkler", "to": "GB50084", "relation": "governed_by" },
+    { "from": "exit", "to": "GB50016", "relation": "governed_by" },
+    { "from": "corridor", "to": "GB50016", "relation": "governed_by" },
+    { "from": "wiring", "to": "GB50016", "relation": "governed_by" },
+    { "from": "fire-facility", "to": "FIRELAW", "relation": "governed_by" },
+    { "from": "management", "to": "FIRELAW", "relation": "governed_by" }
+  ],
+  "inspectionFlow": {
+    "steps": ["外观检查", "功能测试", "环境评估", "法规对照", "报告生成"],
+    "estimatedMinutes": 15,
+    "requiredTools": ["手电筒", "测距仪", "温度计", "照相机"]
+  }
+}

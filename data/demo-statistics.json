@@ -1,0 +1,49 @@
+{
+  "totalChecks": 127,
+  "totalHazards": 342,
+  "completedRectifications": 298,
+  "hazardTypes": [
+    { "name": "消防设施", "value": 98 },
+    { "name": "疏散通道", "value": 76 },
+    { "name": "电气安全", "value": 54 },
+    { "name": "易燃易爆", "value": 48 },
+    { "name": "建筑防火", "value": 38 },
+    { "name": "消防管理", "value": 28 }
+  ],
+  "dailyTrend": [
+    { "date": "2026-06-01", "inspections": 3, "hazards": 5 },
+    { "date": "2026-06-02", "inspections": 5, "hazards": 8 },
+    { "date": "2026-06-03", "inspections": 2, "hazards": 3 },
+    { "date": "2026-06-04", "inspections": 4, "hazards": 7 },
+    { "date": "2026-06-05", "inspections": 6, "hazards": 12 },
+    { "date": "2026-06-06", "inspections": 3, "hazards": 4 },
+    { "date": "2026-06-07", "inspections": 5, "hazards": 9 },
+    { "date": "2026-06-08", "inspections": 7, "hazards": 15 },
+    { "date": "2026-06-09", "inspections": 4, "hazards": 6 },
+    { "date": "2026-06-10", "inspections": 5, "hazards": 10 },
+    { "date": "2026-06-11", "inspections": 6, "hazards": 11 },
+    { "date": "2026-06-12", "inspections": 3, "hazards": 5 },
+    { "date": "2026-06-13", "inspections": 4, "hazards": 8 },
+    { "date": "2026-06-14", "inspections": 2, "hazards": 3 },
+    { "date": "2026-06-15", "inspections": 5, "hazards": 11 },
+    { "date": "2026-06-16", "inspections": 6, "hazards": 14 },
+    { "date": "2026-06-17", "inspections": 4, "hazards": 7 },
+    { "date": "2026-06-18", "inspections": 7, "hazards": 13 },
+    { "date": "2026-06-19", "inspections": 5, "hazards": 9 },
+    { "date": "2026-06-20", "inspections": 3, "hazards": 4 },
+    { "date": "2026-06-21", "inspections": 6, "hazards": 10 },
+    { "date": "2026-06-22", "inspections": 4, "hazards": 6 },
+    { "date": "2026-06-23", "inspections": 5, "hazards": 8 },
+    { "date": "2026-06-24", "inspections": 7, "hazards": 14 },
+    { "date": "2026-06-25", "inspections": 4, "hazards": 7 },
+    { "date": "2026-06-26", "inspections": 5, "hazards": 9 },
+    { "date": "2026-06-27", "inspections": 2, "hazards": 4 }
+  ],
+  "buildingStats": [
+    { "name": "万达写字楼A座", "inspections": 28, "hazards": 45, "lastCheck": "2026-06-21" },
+    { "name": "阳光商场", "inspections": 22, "hazards": 38, "lastCheck": "2026-06-25" },
+    { "name": "星辰幼儿园", "inspections": 15, "hazards": 20, "lastCheck": "2026-06-20" },
+    { "name": "恒隆广场", "inspections": 18, "hazards": 32, "lastCheck": "2026-06-24" },
+    { "name": "市第一人民医院", "inspections": 12, "hazards": 16, "lastCheck": "2026-06-18" }
+  ]
+}

@@ -1,0 +1,89 @@
+/* ═══════════════════════════════════════════════════════════
+   北斗火眼·消防智查 — 首屏关键 CSS (inline in <head>)
+   确保首屏渲染无闪烁，主题色 + 骨架屏 + 安全区域
+   ═══════════════════════════════════════════════════════════ */
+
+/* 品牌导航占位 */
+.brand-bar {
+  background: #D92121;
+  padding: 16px 20px;
+  border-radius: 0 0 20px 20px;
+  color: #fff;
+}
+.brand-bar .title {
+  font-family: "Georgia", "Noto Serif SC", "STSong", serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+.brand-bar .subtitle {
+  font-size: 10px;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+/* Hero 渐变占位 */
+.hero-placeholder {
+  margin: 16px;
+  height: 100px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #D92121, #F97316);
+  animation: hero-pulse 2s ease-in-out infinite;
+}
+
+@keyframes hero-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+/* 骨架屏脉冲 */
+.skeleton {
+  background: linear-gradient(90deg, #F0F0F0 25%, #E8E8E8 50%, #F0F0F0 75%);
+  background-size: 200% 100%;
+  animation: sk-pulse 1.5s ease-in-out infinite;
+}
+@keyframes sk-pulse {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* TabBar 占位 */
+.tabbar-placeholder {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: #fff;
+  border-top: 1px solid #F0F0F0;
+  display: flex;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+.tabbar-placeholder .tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #999;
+}
+
+/* 安全区域 */
+.safe-top { padding-top: env(safe-area-inset-top, 0); }
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0); }
+
+/* 全局字体平滑 */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: #F5F5F5;
+}
+
+/* 页面根容器 */
+.page {
+  min-height: 100vh;
+  background: #F5F5F5;
+  overflow-x: hidden;
+  max-width: 100vw;
+  box-sizing: border-box;
+}

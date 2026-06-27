@@ -1,0 +1,27 @@
+// uni.scss — uni-app 全局样式入口
+// 导入 theme.scss 使其全局可用
+@import '~@/static/theme.scss';
+
+// uni-app 原生组件变量覆盖
+$uni-color-primary: $brand-red-primary;
+$uni-color-success: $safe-green;
+$uni-color-warning: $warn-yellow;
+$uni-color-error: $error-red;
+$uni-bg-color: $bg-page;
+$uni-text-color: $text-primary;
+$uni-text-color-grey: $text-secondary;
+$uni-border-color: $border-color;
+
+// 全局重置
+page {
+  background: $bg-page;
+  font-family: $font-sans;
+  color: $text-primary;
+  font-size: $fs-body;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+view, text, scroll-view {
+  box-sizing: border-box;
+}

@@ -1,0 +1,110 @@
+/* ═══════════════════════════════════════════════════════════
+   北斗火眼·消防智查 — 深色主题独立样式
+   覆盖所有颜色变量、阴影、图片滤镜
+   ═══════════════════════════════════════════════════════════ */
+
+[data-theme="dark"] {
+  /* 页面背景 */
+  --bg-page: #1A1A2E;
+  --bg-card: #16213E;
+  --bg-input: #0F3460;
+  --bg-skeleton: #1A1A2E;
+  --bg-mask: rgba(0,0,0,0.65);
+
+  /* 文字 */
+  --text-primary: #E8E8E8;
+  --text-secondary: #B0B0B0;
+  --text-tertiary: #888888;
+  --text-placeholder: #555555;
+
+  /* 边框 */
+  --border-color: #2A2A4A;
+  --border-light: #222244;
+  --divider-color: #2A2A4A;
+
+  /* 品牌色 */
+  --brand-red-light: #3A1A1A;
+  --brand-red-pale: #2A1515;
+
+  /* 风险等级背景 */
+  --risk-i-bg: #1E3A5F;
+  --risk-ii-bg: #3A3510;
+  --risk-iii-bg: #3A2010;
+  --risk-iv-bg: #3A1515;
+
+  /* 阴影 */
+  --shadow-card-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.4);
+  --shadow-card-lg: 0 4px 16px rgba(0,0,0,0.5);
+  --shadow-modal: 0 8px 32px rgba(0,0,0,0.6);
+  --shadow-brand: 0 2px 12px rgba(217,33,33,0.35);
+
+  /* 全局背景 */
+  background: #1A1A2E;
+  color: #E8E8E8;
+}
+
+/* 深色主题下的图片滤镜 */
+[data-theme="dark"] img:not(.no-dark-filter) {
+  filter: brightness(0.85) contrast(1.05);
+}
+
+/* 深色主题下的骨架屏 */
+[data-theme="dark"] .skeleton {
+  background: linear-gradient(90deg, #1A1A2E 25%, #2A2A4A 50%, #1A1A2E 75%);
+  background-size: 200% 100%;
+}
+
+/* 深色主题下的输入框 */
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background: #0F3460;
+  color: #E8E8E8;
+  border-color: #2A2A4A;
+}
+
+/* 深色主题下的分割线 */
+[data-theme="dark"] hr,
+[data-theme="dark"] .divider {
+  border-color: #2A2A4A;
+}
+
+/* 深色主题下的按钮 */
+[data-theme="dark"] .btn-secondary {
+  background: #16213E;
+  color: #B0B0B0;
+}
+
+/* 深色主题下的卡片 */
+[data-theme="dark"] .card,
+[data-theme="dark"] .hazard-card,
+[data-theme="dark"] .summary-card,
+[data-theme="dark"] .chain-section,
+[data-theme="dark"] .tool-card,
+[data-theme="dark"] .action-card {
+  background: #16213E;
+  border-color: #2A2A4A;
+}
+
+/* 深色主题下的法规区 */
+[data-theme="dark"] .law-section {
+  background: #0F3460;
+}
+
+/* 深色主题下的整改区 */
+[data-theme="dark"] .rectify-box {
+  background: #1E3A5F;
+  color: #93C5FD;
+}
+
+/* 深色主题下的链路段 */
+[data-theme="dark"] .chain-step {
+  background: #0F3460;
+}
+
+/* 深色主题下的 meta 标签 */
+[data-theme="dark"] .meta-tag {
+  background: #0F3460;
+  color: #B0B0B0;
+}

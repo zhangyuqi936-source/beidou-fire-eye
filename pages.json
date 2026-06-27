@@ -1,0 +1,197 @@
+{
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "消防智查",
+        "navigationBarBackgroundColor": "#D92121",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/index/onboarding",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/inspect/capture",
+      "style": {
+        "navigationBarTitleText": "拍照检查",
+        "navigationBarBackgroundColor": "#D92121",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/inspect/analyzing",
+      "style": {
+        "navigationBarTitleText": "AI分析中",
+        "navigationBarBackgroundColor": "#D92121",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/inspect/result",
+      "style": {
+        "navigationBarTitleText": "识别结果",
+        "navigationBarBackgroundColor": "#D92121",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/inspect/video",
+      "style": {
+        "navigationBarTitleText": "视频检查",
+        "navigationBarBackgroundColor": "#D92121",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/inspect/workorder",
+      "style": {
+        "navigationBarTitleText": "巡检工单",
+        "navigationBarBackgroundColor": "#D92121",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/expert/chat",
+      "style": {
+        "navigationBarTitleText": "消防AI专家",
+        "navigationBarBackgroundColor": "#D92121",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/check/check",
+      "style": {
+        "navigationBarTitleText": "快速检查",
+        "navigationBarBackgroundColor": "#D92121",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/check/result",
+      "style": {
+        "navigationBarTitleText": "检查结果",
+        "navigationBarBackgroundColor": "#D92121",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/report/detail",
+      "style": {
+        "navigationBarTitleText": "报告详情",
+        "navigationBarBackgroundColor": "#D92121",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/report/history",
+      "style": {
+        "navigationBarTitleText": "历史报告",
+        "navigationBarBackgroundColor": "#D92121",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/report/statistics",
+      "style": {
+        "navigationBarTitleText": "统计看板",
+        "navigationBarBackgroundColor": "#D92121",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/knowledge/index",
+      "style": {
+        "navigationBarTitleText": "消防知识库",
+        "navigationBarBackgroundColor": "#D92121",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/knowledge/detail",
+      "style": {
+        "navigationBarTitleText": "法规详情",
+        "navigationBarBackgroundColor": "#D92121",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/knowledge/editor",
+      "style": {
+        "navigationBarTitleText": "法规编辑",
+        "navigationBarBackgroundColor": "#D92121",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/building/index",
+      "style": {
+        "navigationBarTitleText": "场所管理",
+        "navigationBarBackgroundColor": "#D92121",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/settings/index",
+      "style": {
+        "navigationBarTitleText": "AI服务设置",
+        "navigationBarBackgroundColor": "#D92121",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/feedback/index",
+      "style": {
+        "navigationBarTitleText": "产品反馈",
+        "navigationBarBackgroundColor": "#D92121",
+        "navigationBarTextStyle": "white"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#D92121",
+    "backgroundColor": "#F5F5F5"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#D92121",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/icons/tab-home.png",
+        "selectedIconPath": "static/icons/tab-home-active.png"
+      },
+      {
+        "pagePath": "pages/report/history",
+        "text": "报告",
+        "iconPath": "static/icons/tab-report.png",
+        "selectedIconPath": "static/icons/tab-report-active.png"
+      },
+      {
+        "pagePath": "pages/knowledge/index",
+        "text": "法规",
+        "iconPath": "static/icons/tab-law.png",
+        "selectedIconPath": "static/icons/tab-law-active.png"
+      },
+      {
+        "pagePath": "pages/building/index",
+        "text": "场所",
+        "iconPath": "static/icons/tab-building.png",
+        "selectedIconPath": "static/icons/tab-building-active.png"
+      },
+      {
+        "pagePath": "pages/settings/index",
+        "text": "设置",
+        "iconPath": "static/icons/tab-settings.png",
+        "selectedIconPath": "static/icons/tab-settings-active.png"
+      }
+    ]
+  }
+}
