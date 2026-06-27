@@ -19,6 +19,7 @@ const CONFIG = {
   h5Dir: path.join(__dirname, 'dist', 'build', 'h5'),
   dataDir: path.join(__dirname, 'data'),
   apiKey: process.env.DEEPSEEK_API_KEY || '',
+  vectorDbUrl: process.env.VECTOR_DB_URL || '', // v2: ChromaDB 语义向量检索
   apiBaseUrl: process.env.DEEPSEEK_BASE_URL || 'https://api.deepseek.com',
   visionModel: 'deepseek-chat',
   peUrl: process.env.PE_URL || 'http://localhost:3100',
@@ -396,6 +397,18 @@ function quantifyRisk(hazard, sceneInfo) {
    ═══════════════════════════════════════════════════════════════ */
 function matchRegulation(hazard, lawDb) {
   const allLaws = [...(lawDb.laws || []), ...(lawDb.customLaws || [])];
+
+  /* v2: ChromaDB 语义向量检索 (mxbai-embed-large)
+     if (CONFIG.vectorDbUrl) {
+       const queryVector = await embedQuery(hazard.description + ' ' + hazard.category);
+       const semanticResults = await fetch(CONFIG.vectorDbUrl + '/api/v1/collections/laws/query', {
+         method: 'POST', body: JSON.stringify({ query_embeddings: [queryVector], n_results: 5 })
+       }).then(r => r.json());
+       // merge with keyword results below
+     }
+  */
+
+  /* v1: 规则关键词策略 (L1等效，始终可用) */
   const results = [];
 
   /* Strategy 1: Category match */
