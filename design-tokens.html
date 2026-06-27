@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>北斗火眼 · 设计 Token 总览</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background:#f5f5f5; color:#333; padding:24px; }
+h1 { font-family: "Georgia", "Noto Serif SC", "STSong", serif; font-size:28px; color:#D92121; margin-bottom:4px; }
+.sub { font-size:13px; color:#999; margin-bottom:32px; }
+
+.section { background:#fff; border-radius:12px; padding:24px; margin-bottom:20px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.section h2 { font-family: "Georgia", "Noto Serif SC", serif; font-size:18px; color:#D92121; margin-bottom:16px; padding-bottom:8px; border-bottom:2px dotted #D92121; }
+
+/* Color swatches */
+.swatches { display:flex; flex-wrap:wrap; gap:12px; }
+.swatch { width:120px; text-align:center; }
+.swatch-box { width:100%; height:60px; border-radius:8px; margin-bottom:6px; }
+.swatch-label { font-size:11px; color:#666; display:block; }
+.swatch-code { font-size:10px; color:#999; font-family:monospace; }
+
+/* Risk color scale */
+.risk-row { display:flex; gap:12px; margin-top:8px; }
+.risk-badge { flex:1; padding:12px 16px; border-radius:8px; color:#fff; font-weight:700; font-size:14px; text-align:center; }
+.risk-badge .risk-label { font-size:11px; opacity:0.85; margin-top:4px; display:block; }
+.bg-blue { background:#3B82F6; }
+.bg-yellow { background:#EAB308; color:#333; }
+.bg-orange { background:#F97316; }
+.bg-red { background:#D92121; }
+
+/* Spacing tokens */
+.spacing-grid { display:grid; grid-template-columns: repeat(6, 1fr); gap:8px; }
+.spacing-item { background:#f8f8f8; border-radius:6px; padding:10px; text-align:center; font-size:11px; }
+.spacing-bar { background:#D92121; height:4px; border-radius:2px; margin-bottom:6px; }
+
+/* Typography */
+.type-sample { padding:12px 0; border-bottom:1px solid #f0f0f0; }
+.type-sample:last-child { border:none; }
+.type-name { font-size:11px; color:#999; margin-bottom:4px; }
+.type-serif { font-family:"Georgia","Noto Serif SC","STSong",serif; }
+.type-sans { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; }
+
+/* Shadow tokens */
+.shadow-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; }
+.shadow-card { background:#fff; border-radius:8px; height:80px; display:flex; align-items:center; justify-content:center; font-size:11px; color:#999; }
+.shadow-card-sm { box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+.shadow-card { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.shadow-card-lg { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+.shadow-modal { box-shadow: 0 8px 32px rgba(0,0,0,0.16); }
+
+/* Radius tokens */
+.radius-grid { display:grid; grid-template-columns: repeat(5, 1fr); gap:12px; }
+.radius-item { background:#D92121; height:48px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; }
+.radius-sm { border-radius:4px; }
+.radius-md { border-radius:8px; }
+.radius-lg { border-radius:12px; }
+.radius-xl { border-radius:16px; }
+.radius-full { border-radius:999px; }
+</style>
+</head>
+<body>
+
+<h1>北斗火眼 · 设计 Token 总览</h1>
+<p class="sub">theme.scss 全局变量可视化参照 · 火焰红 #D92121</p>
+
+<!-- 品牌色系 -->
+<div class="section">
+  <h2>品牌色系</h2>
+  <div class="swatches">
+    <div class="swatch"><div class="swatch-box" style="background:#D92121"></div><span class="swatch-label">品牌红 Primary</span><span class="swatch-code">$brand-red-primary #D92121</span></div>
+    <div class="swatch"><div class="swatch-box" style="background:#B81B1B"></div><span class="swatch-label">品牌红 Dark</span><span class="swatch-code">$brand-red-dark #B81B1B</span></div>
+    <div class="swatch"><div class="swatch-box" style="background:#FDE8E8"></div><span class="swatch-label">品牌红 Light</span><span class="swatch-code">$brand-red-light #FDE8E8</span></div>
+    <div class="swatch"><div class="swatch-box" style="background:linear-gradient(135deg,#D92121,#F97316)"></div><span class="swatch-label">Hero 渐变</span><span class="swatch-code">$gradient-hero</span></div>
+  </div>
+</div>
+
+<!-- 风险等级色 -->
+<div class="section">
+  <h2>风险等级色（隐患/报告用）</h2>
+  <div class="risk-row">
+    <div class="risk-badge bg-blue">I 级 · 低风险<span class="risk-label">可接受 · riskScore≤8</span></div>
+    <div class="risk-badge bg-yellow">II 级 · 一般风险<span class="risk-label">限期30天 · 9-18</span></div>
+    <div class="risk-badge bg-orange">III 级 · 较大风险<span class="risk-label">限期7天 · 19-36</span></div>
+    <div class="risk-badge bg-red">IV 级 · 重大风险<span class="risk-label">立即整改 · 37-64</span></div>
+  </div>
+</div>
+
+<!-- 语义色 -->
+<div class="section">
+  <h2>语义色</h2>
+  <div class="swatches">
+    <div class="swatch"><div class="swatch-box" style="background:#16A34A"></div><span class="swatch-label">安全绿</span><span class="swatch-code">$safe-green</span></div>
+    <div class="swatch"><div class="swatch-box" style="background:#EAB308"></div><span class="swatch-label">警告黄</span><span class="swatch-code">$warn-yellow</span></div>
+    <div class="swatch"><div class="swatch-box" style="background:#DC2626"></div><span class="swatch-label">错误红</span><span class="swatch-code">$error-red</span></div>
+    <div class="swatch"><div class="swatch-box" style="background:#2563EB"></div><span class="swatch-label">信息蓝</span><span class="swatch-code">$info-blue</span></div>
+  </div>
+</div>
+
+<!-- 中性色 -->
+<div class="section">
+  <h2>中性色（背景/卡片/文字）</h2>
+  <div class="swatches">
+    <div class="swatch"><div class="swatch-box" style="background:#F5F5F5;border:1px solid #e0e0e0"></div><span class="swatch-label">页面背景</span><span class="swatch-code">$bg-page #F5F5F5</span></div>
+    <div class="swatch"><div class="swatch-box" style="background:#FFFFFF;border:1px solid #e0e0e0"></div><span class="swatch-label">卡片背景</span><span class="swatch-code">$bg-card #FFFFFF</span></div>
+    <div class="swatch"><div class="swatch-box" style="background:#333333"></div><span class="swatch-label">主文字</span><span class="swatch-code">$text-primary #333</span></div>
+    <div class="swatch"><div class="swatch-box" style="background:#666666"></div><span class="swatch-label">次文字</span><span class="swatch-code">$text-secondary #666</span></div>
+    <div class="swatch"><div class="swatch-box" style="background:#999999"></div><span class="swatch-label">弱文字</span><span class="swatch-code">$text-tertiary #999</span></div>
+    <div class="swatch"><div class="swatch-box" style="background:#E0E0E0"></div><span class="swatch-label">分割线</span><span class="swatch-code">$border-color #E0E0E0</span></div>
+  </div>
+</div>
+
+<!-- 间距体系 -->
+<div class="section">
+  <h2>间距体系</h2>
+  <div class="spacing-grid">
+    <div class="spacing-item"><div class="spacing-bar" style="width:4px"></div>$spacing-xs<br><span style="font-size:10px;color:#999">4px</span></div>
+    <div class="spacing-item"><div class="spacing-bar" style="width:8px"></div>$spacing-sm<br><span style="font-size:10px;color:#999">8px</span></div>
+    <div class="spacing-item"><div class="spacing-bar" style="width:12px"></div>$spacing-md<br><span style="font-size:10px;color:#999">12px</span></div>
+    <div class="spacing-item"><div class="spacing-bar" style="width:16px"></div>$spacing-base<br><span style="font-size:10px;color:#999">16px</span></div>
+    <div class="spacing-item"><div class="spacing-bar" style="width:24px"></div>$spacing-lg<br><span style="font-size:10px;color:#999">24px</span></div>
+    <div class="spacing-item"><div class="spacing-bar" style="width:32px"></div>$spacing-xl<br><span style="font-size:10px;color:#999">32px</span></div>
+  </div>
+</div>
+
+<!-- 圆角体系 -->
+<div class="section">
+  <h2>圆角体系</h2>
+  <div class="radius-grid">
+    <div class="radius-item radius-sm">$radius-sm<br>4px</div>
+    <div class="radius-item radius-md">$radius-md<br>8px</div>
+    <div class="radius-item radius-lg">$radius-lg<br>12px</div>
+    <div class="radius-item radius-xl">$radius-xl<br>16px</div>
+    <div class="radius-item radius-full">$radius-full<br>999px</div>
+  </div>
+</div>
+
+<!-- 字号体系 -->
+<div class="section">
+  <h2>字号 + 字体体系</h2>
+  <div class="type-sample">
+    <div class="type-name">$font-serif (衬线体) — 标题用</div>
+    <div class="type-serif" style="font-size:36px">消防智查 36px</div>
+    <div class="type-serif" style="font-size:22px;margin-top:4px">消防智查 22px</div>
+    <div class="type-serif" style="font-size:18px;margin-top:4px">消防智查 18px</div>
+  </div>
+  <div class="type-sample">
+    <div class="type-name">$font-sans (无衬线) — 正文用</div>
+    <div class="type-sans" style="font-size:28px">数据统计 28px $fs-stat</div>
+    <div class="type-sans" style="font-size:16px;margin-top:4px">正文内容 16px $fs-body</div>
+    <div class="type-sans" style="font-size:14px;margin-top:4px">辅助文字 14px $fs-desc</div>
+    <div class="type-sans" style="font-size:10px;margin-top:4px">标签文字 10px $fs-tag</div>
+  </div>
+</div>
+
+<!-- 阴影体系 -->
+<div class="section">
+  <h2>阴影体系</h2>
+  <div class="shadow-grid">
+    <div class="shadow-card shadow-card-sm">$shadow-card-sm<br>卡片·浅</div>
+    <div class="shadow-card shadow-card">$shadow-card<br>卡片</div>
+    <div class="shadow-card shadow-card-lg">$shadow-card-lg<br>卡片·深</div>
+    <div class="shadow-card shadow-modal">$shadow-modal<br>弹窗</div>
+  </div>
+</div>
+
+</body>
+</html>

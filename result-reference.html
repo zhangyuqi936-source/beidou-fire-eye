@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>北斗火眼 · 识别结果页视觉参照</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #F5F5F5; color: #333;
+  display:flex; justify-content:center;
+}
+.phone-frame {
+  width: 375px; min-height:100vh; background:#F5F5F5;
+  overflow-x:hidden; box-shadow:0 0 0 1px #e0e0e0;
+}
+
+/* 顶栏 */
+.top-bar {
+  background: #D92121; color:#fff;
+  padding:14px 16px; display:flex; align-items:center; gap:10px;
+  position:sticky; top:0; z-index:10;
+}
+.top-bar .back { font-size:18px; cursor:pointer; }
+.top-bar .title { font-family:"Georgia","Noto Serif SC","STSong",serif; font-size:17px; font-weight:700; }
+
+/* 摘要卡片 */
+.summary-card {
+  margin: 16px; padding:16px 20px;
+  background: #fff; border-radius:14px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+}
+.summary-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+.summary-header .label { font-size:13px; color:#666; }
+.summary-header .count { font-size:36px; font-family:"Georgia","Noto Serif SC",serif; font-weight:700; color:#D92121; }
+.risk-bar-row { display:flex; gap:8px; margin-top:8px; }
+.risk-chip {
+  flex:1; padding:6px 0; border-radius:8px; font-size:11px; text-align:center;
+  color: #fff; font-weight:600;
+}
+
+/* === 隐患卡片 === */
+.hazard-list { margin:0 16px; display:flex; flex-direction:column; gap:12px; padding-bottom:80px; }
+.hazard-card {
+  background:#fff; border-radius:14px; overflow:hidden;
+  box-shadow:0 1px 4px rgba(0,0,0,0.06);
+  border-left: 5px solid #EAB308;
+}
+.hazard-card.level-I { border-left-color:#3B82F6; }
+.hazard-card.level-II { border-left-color:#EAB308; }
+.hazard-card.level-III { border-left-color:#F97316; }
+.hazard-card.level-IV { border-left-color:#D92121; }
+
+.hazard-header {
+  padding:14px 16px 0;
+  display:flex; justify-content:space-between; align-items:flex-start;
+}
+.hazard-header .title-area { flex:1; }
+.hazard-header .hazard-title { font-size:15px; font-weight:700; color:#333; }
+.hazard-header .hazard-category {
+  margin-top:4px; font-size:11px; color:#999;
+}
+
+/* 风险徽标 */
+.risk-badge {
+  padding:3px 10px; border-radius:99px; font-size:10px; font-weight:700;
+  white-space:nowrap;
+}
+.risk-badge.l1 { background:#DBEAFE; color:#1D4ED8; }
+.risk-badge.l2 { background:#FEF3C7; color:#854D0E; }
+.risk-badge.l3 { background:#FFEDD5; color:#9A3412; }
+.risk-badge.l4 { background:#FEE2E2; color:#991B1B; }
+.risk-badge.l4::before { content:"⚠️ "; }
+
+.hazard-body { padding:10px 16px; }
+.hazard-body .desc { font-size:13px; color:#555; line-height:1.6; }
+.hazard-body .confidence {
+  margin-top:6px; font-size:10px; color:#999;
+}
+.hazard-body .confidence .high { color:#16A34A; }
+.hazard-body .confidence .medium { color:#EAB308; }
+.hazard-body .confidence .low { color:#DC2626; }
+
+/* 法规匹配区 */
+.law-section {
+  background:#F8F8F8; margin:0 16px 12px; border-radius:10px;
+  padding:12px; font-size:12px;
+}
+.law-section .law-label {
+  font-size:10px; color:#D92121; font-weight:700; margin-bottom:6px;
+}
+.law-item {
+  padding:8px 0; border-bottom:1px solid #eee;
+  line-height:1.5;
+}
+.law-item:last-child { border:none; }
+.law-item .law-code { font-family:monospace; font-size:11px; font-weight:700; color:#D92121; }
+.law-item .law-clause { color:#666; }
+.law-item .law-content { color:#999; font-size:11px; margin-top:2px; }
+.law-item .law-penalty {
+  color:#D92121; font-size:10px; margin-top:2px;
+  background:#FEE2E2; padding:2px 6px; border-radius:4px; display:inline-block;
+}
+
+/* 整改建议 */
+.rectify-box {
+  background:#EFF6FF; margin:12px 16px; border-radius:10px;
+  padding:12px; font-size:12px; color:#1E40AF; line-height:1.5;
+}
+
+/* === meta.chain 链路可视化 === */
+.chain-section {
+  margin:16px; padding:14px 16px;
+  background:#fff; border-radius:14px;
+  box-shadow:0 1px 4px rgba(0,0,0,0.06);
+}
+.chain-title {
+  font-size:12px; color:#999; margin-bottom:10px;
+}
+.chain-steps { display:flex; flex-direction:column; gap:6px; }
+.chain-step {
+  display:flex; align-items:center; gap:8px;
+  font-size:11px; color:#666; padding:6px 10px;
+  background:#F9FAFB; border-radius:8px;
+}
+.chain-step .step-icon { font-size:16px; }
+.chain-step .step-icon.done { color:#16A34A; }
+.chain-step .step-icon.warn { color:#EAB308; }
+.chain-step .step-time { margin-left:auto; font-size:10px; color:#999; }
+
+/* meta 信息行 */
+.meta-row {
+  margin:0 16px 12px; display:flex; gap:8px; flex-wrap:wrap;
+}
+.meta-tag {
+  padding:4px 10px; border-radius:99px; font-size:10px;
+  background:#F3F4F6; color:#666;
+}
+.meta-tag.mode { background:#FDE8E8; color:#D92121; }
+
+/* 底部操作 */
+.bottom-bar {
+  position:sticky; bottom:0; background:#fff;
+  padding:12px 16px calc(12px + env(safe-area-inset-bottom,0));
+  border-top:1px solid #f0f0f0;
+  display:flex; gap:10px;
+}
+.btn { flex:1; padding:12px; border-radius:12px; font-size:14px; font-weight:700; text-align:center; border:none; cursor:pointer; }
+.btn-primary { background:#D92121; color:#fff; }
+.btn-secondary { background:#F5F5F5; color:#666; }
+</style>
+</head>
+<body>
+<div class="phone-frame">
+
+  <!-- 顶栏 -->
+  <div class="top-bar">
+    <span class="back">←</span>
+    <span class="title">识别结果</span>
+  </div>
+
+  <!-- 摘要 -->
+  <div class="summary-card">
+    <div class="summary-header">
+      <span class="label">发现隐患</span>
+      <span class="count">4</span>
+    </div>
+    <div class="risk-bar-row">
+      <div class="risk-chip bg-blue" style="background:#3B82F6;flex:0.5">Ⅰ×1</div>
+      <div class="risk-chip" style="background:#EAB308;flex:1">Ⅱ×1</div>
+      <div class="risk-chip" style="background:#F97316;flex:1.2">Ⅲ×1</div>
+      <div class="risk-chip" style="background:#D92121;flex:1.5">Ⅳ×1</div>
+    </div>
+  </div>
+
+  <!-- 隐患1 - IV级红色 -->
+  <div class="hazard-list">
+    <div class="hazard-card level-IV">
+      <div class="hazard-header">
+        <div class="title-area">
+          <div class="hazard-title">疏散通道严重堵塞</div>
+          <div class="hazard-category">疏散通道 · 2.2.1</div>
+        </div>
+        <div class="risk-badge l4">IV 级·立即整改</div>
+      </div>
+      <div class="hazard-body">
+        <div class="desc">疏散走道被纸箱和杂物堆放占据约70%宽度，严重影响人员紧急疏散。现场可见大量纸箱堆至天花板高度。</div>
+        <div class="confidence">置信度 <span class="high">high</span> · 风险值 48</div>
+      </div>
+      <div class="law-section">
+        <div class="law-label">📋 匹配法规 (3条)</div>
+        <div class="law-item">
+          <span class="law-code">GB 50016-2014</span>
+          <span class="law-clause">第5.5.2条 安全出口</span>
+          <div class="law-content">公共建筑内每个防火分区的安全出口不应少于2个。</div>
+        </div>
+        <div class="law-item">
+          <span class="law-code">《消防法》</span>
+          <span class="law-clause">第28条</span>
+          <div class="law-content">任何单位、个人不得占用、堵塞、封闭疏散通道、安全出口。</div>
+          <span class="law-penalty">处罚：五千元~五万元罚款</span>
+        </div>
+      </div>
+      <div class="rectify-box">
+        💡 <strong>整改建议</strong>：立即清理疏散走道上所有杂物，确保净宽度≥1.4m。限期24小时内完成，完成后拍照留档。
+      </div>
+    </div>
+
+    <!-- 隐患2 - III级橙色 -->
+    <div class="hazard-card level-III">
+      <div class="hazard-header">
+        <div class="title-area">
+          <div class="hazard-title">灭火器缺失</div>
+          <div class="hazard-category">消防设施 · 1.3.1</div>
+        </div>
+        <div class="risk-badge l3">III 级·限期7天</div>
+      </div>
+      <div class="hazard-body">
+        <div class="desc">消火栓箱旁应配置2具灭火器，现场仅发现灭火器箱为空，灭火器缺失。</div>
+        <div class="confidence">置信度 <span class="high">high</span> · 风险值 24</div>
+      </div>
+      <div class="law-section">
+        <div class="law-label">📋 匹配法规 (2条)</div>
+        <div class="law-item">
+          <span class="law-code">GB 50140-2005</span>
+          <span class="law-clause">第6.1条 灭火器配置</span>
+          <div class="law-content">灭火器应设置在位置明显和便于取用的地点，且不得影响安全疏散。</div>
+          <span class="law-penalty">处罚：责令改正，处五千元以下罚款</span>
+        </div>
+      </div>
+      <div class="rectify-box">
+        💡 <strong>整改建议</strong>：按 GB 50140 配置2具4kg干粉灭火器于指定位置，限期7天内完成。
+      </div>
+    </div>
+
+    <!-- 隐患3 - II级黄色 -->
+    <div class="hazard-card level-II">
+      <div class="hazard-header">
+        <div class="title-area">
+          <div class="hazard-title">电气线路老化裸露</div>
+          <div class="hazard-category">电气安全 · 3.1.2</div>
+        </div>
+        <div class="risk-badge l2">II 级·限期30天</div>
+      </div>
+      <div class="hazard-body">
+        <div class="desc">天花板处可见裸露电线接头，绝缘层老化破损，存在电气火灾风险。</div>
+        <div class="confidence">置信度 <span class="medium">medium</span> · 风险值 16</div>
+      </div>
+      <div class="law-section">
+        <div class="law-label">📋 匹配法规 (1条)</div>
+        <div class="law-item">
+          <span class="law-code">GB 50016-2014</span>
+          <span class="law-clause">第10.2条 电气线路</span>
+          <div class="law-content">电气线路敷设应采取防火保护措施。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 隐患4 - I级蓝色 -->
+    <div class="hazard-card level-I">
+      <div class="hazard-header">
+        <div class="title-area">
+          <div class="hazard-title">应急照明灯损坏</div>
+          <div class="hazard-category">消防设施 · 1.5.1</div>
+        </div>
+        <div class="risk-badge l1">I 级·可接受</div>
+      </div>
+      <div class="hazard-body">
+        <div class="desc">走道尽头处一盏应急照明灯外观破损，灯罩碎裂。</div>
+        <div class="confidence">置信度 <span class="high">high</span> · 风险值 6</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- meta.chain 链路可视化 -->
+  <div class="chain-section">
+    <div class="chain-title">🔗 识别链路 · L0 全功能 · 3.2秒</div>
+    <div class="chain-steps">
+      <div class="chain-step">
+        <span class="step-icon done">✅</span>
+        <span>场景识别：商场(B2)</span>
+        <span class="step-time">0.3s</span>
+      </div>
+      <div class="chain-step">
+        <span class="step-icon done">✅</span>
+        <span>Layer1 消防设施检测：2处异常</span>
+        <span class="step-time">0.8s</span>
+      </div>
+      <div class="chain-step">
+        <span class="step-icon done">✅</span>
+        <span>Layer2 通道环境检测：1处异常</span>
+        <span class="step-time">0.7s</span>
+      </div>
+      <div class="chain-step">
+        <span class="step-icon done">✅</span>
+        <span>Layer3 危险源检测：1处异常</span>
+        <span class="step-time">0.5s</span>
+      </div>
+      <div class="chain-step">
+        <span class="step-icon done">✅</span>
+        <span>风险量化：最高 IV级 · score=48</span>
+        <span class="step-time">0.1s</span>
+      </div>
+      <div class="chain-step">
+        <span class="step-icon done">✅</span>
+        <span>法规匹配：匹配 6 条条款</span>
+        <span class="step-time">0.3s</span>
+      </div>
+      <div class="chain-step">
+        <span class="step-icon done">✅</span>
+        <span>报告生成：完成</span>
+        <span class="step-time">0.5s</span>
+      </div>
+    </div>
+    <div class="meta-row" style="margin-top:10px;margin-left:0;margin-right:0;">
+      <span class="meta-tag mode">🤖 hybrid_ai</span>
+      <span class="meta-tag">DeepSeek Vision</span>
+      <span class="meta-tag">mxbai-embed</span>
+      <span class="meta-tag">L0全功能</span>
+    </div>
+  </div>
+
+  <!-- 底部操作 -->
+  <div class="bottom-bar">
+    <button class="btn btn-secondary">🔄 重新检查</button>
+    <button class="btn btn-primary">📄 生成报告</button>
+  </div>
+
+</div>
+</body>
+</html>
